@@ -43,9 +43,9 @@ const Navbar = () => {
 
           <div className="flex h-full items-center">
             <div className="hidden md:block">
-              {navItems.map((item) => (
+              {navItems.map((item, index) => (
                 <a
-                  key={item}
+                  key={index}
                   href={`#${item.toLowerCase()}`}
                   className="nav-hover-btn"
                 >
@@ -53,28 +53,31 @@ const Navbar = () => {
                 </a>
               ))}
             </div>
+            <button
+              className="ml-10 flex items-center space-x-0.5"
+              onClick={toggleAudioIndicator}
+            >
+              <audio
+                ref={audioElementRef}
+                className="hidden"
+                src="/audio/loop.mp3"
+                loop
+              />
+              {[1, 2, 3, 4].map((bar) => {
+                return (
+                  <div
+                    key={bar}
+                    className={`indicator-line  ${
+                      isIndicatorActive ? "active" : ""
+                    }`}
+                    style={{
+                      animationDelay: `${bar * 0.2}s`,
+                    }}
+                  ></div>
+                );
+              })}
+            </button>
           </div>
-
-          <button
-            className="ml-10 flex items-center space-x-0.5"
-            onClick={toggleAudioIndicator}
-          >
-            <audio
-              ref={audioElementRef}
-              className="hidden"
-              src="/audio/loop.mp3"
-              loop
-            />
-            {[1, 2, 3, 4].map((bar) => {
-              <div
-                key={bar}
-                className={`indicator-line ${
-                  isIndicatorActive ? "active" : ""
-                }`}
-                style={{ animationDelay: `${bar * 0.1}s` }}
-              ></div>;
-            })}
-          </button>
         </nav>
       </header>
     </div>
