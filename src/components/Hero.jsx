@@ -61,7 +61,7 @@ const Hero = () => {
 
   useGSAP(() => {
     gsap.set("#video-frame", {
-      clipPath: "polygon(15% 0%, 75% 0%, 80% 80%, 0% 90%)",
+      clipPath: "polygon(19% 0, 74% 4%, 81% 93%, 5% 100%)",
     });
 
     gsap.from("#video-frame", {
